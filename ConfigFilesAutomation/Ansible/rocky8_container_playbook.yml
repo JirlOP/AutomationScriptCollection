@@ -1,0 +1,43 @@
+---
+- name: Setup Rocky Linux 8 LAMP Stack
+  hosts: rocky_linux_container
+  become: yes  # Use sudo to run tasks with root privileges
+  tasks:
+
+    - name: Ensure Apache is installed
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure MariaDB is installed
+      yum:
+        name: mariadb-server
+        state: present
+
+    - name: Ensure PHP is installed
+      yum:
+        name: php
+        state: present
+
+    - name: Start and enable Apache service
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Start and enable MariaDB service
+      systemd:
+        name: mariadb
+        state: started
+        enabled: true
+
+    - name: Secure MariaDB installation
+      mysql_secure_installation:
+        login_user: root
+        login_password: ''
+        new_password: 'YourSecurePassword'
+        change_root_password: yes
+        remove_anonymous_users: yes
+        disallow_root_login_remotely: yes
+        remove_test_database: yes
+        ensure_root_localhost: yes

@@ -1,0 +1,25 @@
+---
+- name: Setup Windows 10 with Chocolatey, Chrome, and Notepad++
+  hosts: windows_10_container
+  become: yes
+  tasks:
+
+    - name: Ensure Chocolatey is installed
+      win_chocolatey:
+        name: chocolatey
+        state: present
+
+    - name: Install Google Chrome
+      win_chocolatey:
+        name: googlechrome
+        state: present
+
+    - name: Install Notepad++
+      win_chocolatey:
+        name: notepadplusplus
+        state: present
+
+    - name: Ensure Chrome is installed
+      win_feature:
+        name: Google Chrome
+        state: present

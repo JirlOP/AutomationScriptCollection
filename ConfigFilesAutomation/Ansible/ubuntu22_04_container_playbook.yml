@@ -1,0 +1,33 @@
+---
+- name: Setup Ubuntu 22.04 with Nginx, MySQL, and Python
+  hosts: ubuntu22_04_container
+  become: yes  # Use sudo
+
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure MySQL is installed
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Ensure Python 3 is installed
+      apt:
+        name: python3
+        state: present
+
+    - name: Start and enable Nginx service
+      systemd:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Start and enable MySQL service
+      systemd:
+        name: mysql
+        state: started
+        enabled: true

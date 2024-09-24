@@ -1,0 +1,14 @@
+rocky8_container      package ->  httpd
+rocky8_container      package ->  mariadb-server
+rocky8_container      package ->  php
+rocky8_container      package ->  httpd
+rocky8_container      package ->  mariadb
+ubuntu22_04_container      package ->  nginx
+ubuntu22_04_container      package ->  mysql-server
+ubuntu22_04_container      package ->  python3
+ubuntu22_04_container      package ->  nginx
+ubuntu22_04_container      package ->  mysql
+windows10_container      package ->  chocolatey
+windows10_container      package ->  googlechrome
+windows10_container      package ->  notepadplusplus
+windows10_container      package ->  Google Chrome
